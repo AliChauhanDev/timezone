@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project_Clock_By_Ali</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class=".navbar">
+      <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="dropdown">
+              <a href="#">Timezones</a>
+              <div class="dropdown-content">
+                <a href="index.html">
+                  <img src="http://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png" alt="India"> India
+                </a>
+                <a href="timezone_US.html">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png" alt="USA"> USA
+                </a>
+                <a href="timezone_France.html">
+                    <img src="https://s.yimg.com/fz/api/res/1.2/Cenr9WPTlMozX.m6dgWOzA--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpdDtoPTI2MDtxPTgwO3c9MzMy/https://s.yimg.com/zb/imgv1/50349f12-37cf-3979-8cb3-886bb328db12/t_500x300" alt="France">France
+                  </a>
+                <!-- Add more options as needed -->
+              </div>
+            </li>
+        </ul> 
+          <input type="text" placeholder="Search...">
+          <button type="submit">Search</button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="clock">
+      <div class="heading">
+        <h1>Welcome To World's Time</h1>
+      </div>
+      <div class="text">
+        <h1 id="clock"> Time :- <span id="time"></span></h1>
+        <h1 id="clock"> Date :- <span id="date"></span></h1>
+        <h1 id="clock"> Day  :- <span id="day"></span></h1>
+        <h2>Time Zone (IST):-
+            <img src="https://s.yimg.com/fz/api/res/1.2/Cenr9WPTlMozX.m6dgWOzA--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpdDtoPTI2MDtxPTgwO3c9MzMy/https://s.yimg.com/zb/imgv1/50349f12-37cf-3979-8cb3-886bb328db12/t_500x300" alt="ind">
+        </h2>
+        
+          </div>
+      </div>
+    </div>
+    <script>
+       const time = document.getElementById('time'); 
+        const date = document.getElementById('date');
+        const day = document.getElementById('day');
+
+        function clock(){
+            const today = new Date();
+            const hours = today.getHours().toString().padStart(2, '0');
+            const minutes = today.getMinutes().toString().padStart(2, '0');
+            const seconds = today.getSeconds().toString().padStart(2, '0');
+            time.textContent = hours + ':' + minutes + ':' + seconds;
+            const dt = today.getDate() +"/"+(today.getMonth()+1)+"/"+today.getFullYear()
+            date.textContent = dt;
+            const dy = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            day.textContent = dy[today.getDay()];
+            const franceTime = today.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris' });
+            time.textContent = franceTime;
+            const franceDate = today.toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris' });
+            date.textContent = franceDate;
+        }
+        clock();
+        setInterval(clock,1000)
+    </script>
+  </main>
+</body>
+</html>
+
